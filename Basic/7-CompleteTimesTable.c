@@ -10,4 +10,5 @@ int main () {
             printf("%i x %i = %i\n", i, j, result);
         }
     }
+    return 0;
 }

@@ -10,4 +10,6 @@ int main()
     printf("%i\n", i);
     i = i + 1;
   } while (i <= 5);
+
+  return 0;
 }

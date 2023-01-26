@@ -21,7 +21,7 @@ int main()
     }
     for (int k = 0; k < 4; k++)
     {
-        printf("\nMédia dos aluno %i é %.2f\n", k, studentsAverage[k]);
+        printf("\nMédia dos aluno %i é %.2f\n", k + 1, studentsAverage[k]);
     }
 
     return 0;
