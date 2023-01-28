@@ -1,8 +1,8 @@
+// Counter with "do while" structure
 #include <stdio.h>
 
 int main()
 {
-
   int i = 1;
 
   do

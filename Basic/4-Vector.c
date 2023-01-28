@@ -1,3 +1,4 @@
+// Displays the values of a vector
 #include <stdio.h>
 
 int main () {

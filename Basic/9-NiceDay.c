@@ -1,9 +1,11 @@
+// Wish you have a good day
 #include <stdio.h>
 
 void printMsg(void);
 
 int main () {
     printMsg();
+    
     return 0;
 }
 

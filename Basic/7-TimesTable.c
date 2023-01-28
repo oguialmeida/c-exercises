@@ -1,3 +1,4 @@
+// Times table from any number caculated until 9
 #include <stdio.h>
 
 int main()

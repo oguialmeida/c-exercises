@@ -1,3 +1,4 @@
+// Factorial of any integer
 #include <stdio.h>
 
 int main()

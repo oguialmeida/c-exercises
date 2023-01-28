@@ -1,3 +1,4 @@
+// Displays the average of two numbers
 #include <stdio.h>>
 
 main()

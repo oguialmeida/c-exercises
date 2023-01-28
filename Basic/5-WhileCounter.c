@@ -1,3 +1,4 @@
+// Counter with "while" structure
 #include <stdio.h>
 
 int main()

@@ -1,3 +1,4 @@
+// Counter whith "for" structure 
 #include <stdio.h>
 
 int main()

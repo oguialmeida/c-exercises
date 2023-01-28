@@ -1,8 +1,8 @@
+// Displays the sum of two numbers
 #include <stdio.h>
 
 int main(void)
 {
-
     int n1, n2, s;
 
     printf("Digite um numero: ");

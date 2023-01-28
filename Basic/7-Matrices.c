@@ -1,3 +1,4 @@
+// Displays the numbers from a two dimensional array
 #include <stdio.h>
 
 int main() {

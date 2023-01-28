@@ -1,3 +1,4 @@
+// Displays whether an integer is divisible by another
 #include <stdio.h>
 
 int main()

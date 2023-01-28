@@ -1,3 +1,4 @@
+// Store grades in a dimensional array
 #include <stdio.h>
 
 int main()

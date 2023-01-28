@@ -1,3 +1,4 @@
+// A simple calculator between 2 numbers
 #include <stdio.h>
 
 int main()
