@@ -2,13 +2,13 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
+#define PI 3.14159265358979323846
 
-void mainMenu();
-void planeMenu();
-void solidMenu();
-char* measureMenu(int menuType);
-float planeArea(int operation);
-float solidVolume(int operation);
+int mainMenu();
+char *measureMenu(int menuType);
+float planeArea();
+float solidVolume();
+bool menuLoop();
 float squareArea(float side);
 float retangArea(float base, float hight);
 float trapazeArea(float bigBase, float smallBase, float hight);
@@ -27,87 +27,55 @@ int main()
 {
     system("clear");
     bool loop = true;
-    char* meansure[4];
+    char *meansure;
+    int option;
+    float result = 0;
 
-    while (loop == true)
+    while (loop)
     {
-        int menuType, operation, keepGoing;
-        float result = 0;
-
-        mainMenu();
-        scanf("%i", &menuType);
+        option = mainMenu();
         system("clear");
 
-        meansure[4] = measureMenu(menuType);
+        meansure = measureMenu(option);
         system("clear");
 
-        switch (menuType)
+        switch (option)
         {
         case 1:
-            planeMenu();
-            scanf("%i", &operation);
-            system("clear");
-            result = planeArea(operation);
+            result = planeArea();
             break;
         case 2:
-            solidMenu();
-            scanf("%i", &operation);
-            system("clear");
-            result = solidVolume(operation);
+            result = solidVolume();
             break;
         default:
             printf("Digite um valór válido!\n");
         }
 
-        printf("\nResultado: %.2f %s\n", result, meansure[4]);
+        printf("\nResultado: %.2f %s\n", result, meansure);
 
-        printf("\nDeseja continuar?\n[1] Continuar\n[2] Sair\n");
-        scanf("%i", &keepGoing);
-
-        switch (keepGoing)
-        {
-        case 1:
-            result = 0;
-            loop = true;
-            system("clear");
-            break;
-        case 2:
-            loop = false;
-            printf("\nMuito obrigado!\n");
-            break;
-        default:
-            printf("\nVálor inválido!\n");
-            loop = false;
-        }
+        loop = menuLoop();
     }
 
     return 0;
 }
-void mainMenu()
+
+int mainMenu()
 {
+    int menuType;
     printf("----------------------------\n");
     printf("---CALCULADORA GEOMÉTRICA---\n");
     printf("----------------------------\n");
 
     printf("Para calular digite:\n [1] Para planos\n [2] Para sólidos\n");
+    scanf("%i", &menuType);
+
+    return menuType;
 }
 
-void planeMenu()
-{
-    printf("Digite para calcular a área do: \n");
-    printf(" [1] Quadrado\n [2] Retângulo\n [3] Trapézio\n [4] Triângulo\n [5] Triângulo Equilátero\n [6] Losango\n [7] Círculo\n");
-}
-
-void solidMenu()
-{
-    printf("Digite para calcular a área do(a): \n");
-    printf(" [1] Pirâmide\n [2] Cone\n [3] Cilindro\n [4] Prisma\n [5] Cubo\n [6] Esfera\n");
-}
-
-char* measureMenu(int menuType)
+char *measureMenu(int menuType)
 {
     int measure;
-    
+
     switch (menuType)
     {
     case 1:
@@ -175,9 +143,17 @@ char* measureMenu(int menuType)
     }
 }
 
-float planeArea(int operation)
+float planeArea()
 {
     float value1, value2, value3, result;
+
+    int operation;
+    printf("Digite para calcular a área do: \n");
+    printf(" [1] Quadrado\n [2] Retângulo\n [3] Trapézio\n [4] Triângulo\n [5] Triângulo Equilátero\n [6] Losango\n [7] Círculo\n");
+    scanf("%i", &operation);
+
+    system("clear");
+
     switch (operation)
     {
     case 1:
@@ -243,9 +219,17 @@ float planeArea(int operation)
     return result;
 }
 
-float solidVolume(int operation)
+float solidVolume()
 {
+    int operation;
     float value1, value2, result;
+
+    printf("Digite para calcular a área do(a): \n");
+    printf(" [1] Pirâmide\n [2] Cone\n [3] Cilindro\n [4] Prisma\n [5] Cubo\n [6] Esfera\n");
+    scanf("%i", &operation);
+
+    system("clear");
+
     switch (operation)
     {
     case 1:
@@ -305,97 +289,89 @@ float solidVolume(int operation)
     return result;
 }
 
+bool menuLoop()
+{
+    int keepGoing;
+    printf("\nDeseja continuar?\n[1] Continuar\n[2] Sair\n");
+    scanf("%i", &keepGoing);
+
+    switch (keepGoing)
+    {
+    case 1:
+        system("clear");
+        return true;
+        break;
+    case 2:
+        printf("\nMuito obrigado!\n");
+        return false;
+        break;
+    default:
+        printf("\nVálor inválido!\n");
+        return false;
+    }
+}
+
 float squareArea(float side)
 {
-    float area = side * side;
-
-    return area;
+    return side * side;
 }
 
 float retangArea(float base, float hight)
 {
-    float area = base * hight;
-
-    return area;
+    return base * hight;
 }
 
 float trapazeArea(float bigBase, float smallBase, float hight)
 {
-    float area = ((bigBase + smallBase) * hight) / 2;
-
-    return area;
+    return ((bigBase + smallBase) * hight) / 2;
 }
 
 float triangArea(float base, float hight)
 {
-    float area = (base * hight) / 2;
-
-    return area;
+    return (base * hight) / 2;
 }
 
 float triangEquiArea(float side)
 {
-    float area = ((side * side) * sqrt(3) / 4);
-
-    return area;
+    return ((side * side) * sqrt(3) / 4);
 }
 
 float diamondArea(float bigDiagonal, float smallDiagonal)
 {
-    float area = (bigDiagonal * smallDiagonal) / 2;
-
-    return area;
+    return (bigDiagonal * smallDiagonal) / 2;
 }
 
 float circleArea(float radius)
 {
-    float pi = 3.14159265359;
-    float area = pi * (radius * radius);
-
-    return area;
+    return PI * (radius * radius);
 }
 
 float pyramidVolume(float baseArea, float hight)
 {
-    float volume = (baseArea * hight) / 3;
-
-    return volume;
+    return (baseArea * hight) / 3;
 }
 
 float coneVolume(float radius, float hight)
 {
-    float pi = 3.14159265359;
-    float volume = (pi * (radius * radius) * hight) / 3;
-
-    return volume;
+    return (PI * (radius * radius) * hight) / 3;
 }
 
 float cylinderVolume(float radius, float hight)
 {
-    float pi = 3.14159265359;
-    float volume = (pi * (radius * radius) * hight);
-
-    return volume;
+    return (PI * (radius * radius) * hight);
 }
 
 float prismVolume(float baseArea, float hight)
 {
-    float volume = baseArea * hight;
-
-    return volume;
+    return baseArea * hight;
 }
 
 float cubeVolume(float baseArea, float hight)
 {
-    float volume = baseArea * hight;
-
-    return volume;
+    return baseArea * hight;
 }
 
 float ballVolume(float radius)
 {
-    float pi = 3.14159265359;
-    float volume = (4 / 3) * pi * (radius * radius * radius);
-
-    return volume;
+    return (4 / 3) * PI * (radius * radius * radius);
 }
