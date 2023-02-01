@@ -3,64 +3,63 @@
 #include <time.h>
 #define TAM 100
 
-void bubbleSort(int v[], int num);
-void imprimirVetor(int v[], int tamanho);
-
-int vetor[TAM], vetor2[TAM], tamanho, i, aux;
-static int change = 0;
+void showArray(int array[], int arraySize);
+int bubbleSort(int array[], int arraySize);
 
 int main()
 {
+    int arraySize, array[TAM], clone[TAM];
+
     printf("\nDigite o tamanho do vetor: ");
-    scanf("%d", &tamanho);
-    printf("\n");
+    scanf("%i", &arraySize);
+
+    printf("\nVetor fora de ordem: ");
 
     srand(time(NULL));
 
-    printf("FORA DE ORDEM:\n\n");
-
-    for (i = 0; i < tamanho; i++)
+    for (int i = 0; i < arraySize; i++)
     {
-        vetor[i] = rand() % 1000;
-        printf("%d ", vetor[i]);
+        array[i] = rand() % 1000;
+        printf("%i ", array[i]);
 
-        vetor2[i] = vetor[i];
+        clone[i] = array[i];
     }
 
-    printf("\n\nORDENADOS: ");
-    printf("\n\n");
-
-    imprimirVetor(vetor2, tamanho);
+    printf("\n\nVetor ordenado: ");
+    showArray(clone, arraySize);
 
     return 0;
 }
 
-void bubbleSort(int v[], int num)
+int bubbleSort(int array[], int arraySize)
 {
-    for (int i = 1; i <= num - 1; i++)
+    static int change = 0;
+    int i, j, aux;
+
+    for (i = 0; i < arraySize; i++)
     {
-
-        for (int j = 0; j < num - 1; j++)
+        for (j = i + 1; j < arraySize; j++)
         {
-
-            if (v[j] > v[j + 1])
+            if (array[i] > array[j])
             {
-                aux = v[j + 1];
-                v[j + 1] = v[j];
-                v[j] = aux;
+                aux = array[i];
+                array[i] = array[j];
+                array[j] = aux;
                 change++;
             }
         }
     }
+
+    return change;
 }
 
-void imprimirVetor(int v[], int tamanho)
+void showArray(int array[], int arraySize)
 {
-    for (int i = 0; i < tamanho; i++)
+    int change;
+    for (int i = 0; i < arraySize; i++)
     {
-        bubbleSort(vetor2, tamanho);
-        printf("%d ", vetor2[i]);
+        change = bubbleSort(array, arraySize);
+        printf("%i ", array[i]);
     }
-    printf("\n");
-    printf("\nNUMERO DE TROCAS: %d\n\n", change);
+    printf("\n\nTrocas realizadas: %i\n\n", change);
 }
